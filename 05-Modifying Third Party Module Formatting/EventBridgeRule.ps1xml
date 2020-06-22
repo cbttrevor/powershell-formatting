@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+<View>
+  <Name>service</Name>
+  <ViewSelectedBy>
+    <TypeName>Amazon.EventBridge.Model.Rule</TypeName>
+  </ViewSelectedBy>
+  <TableControl>
+    <AutoSize />
+    <TableHeaders>
+      <TableColumnHeader>
+        <Label>Name</Label>
+        <Width>8</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>State</Label>
+        <Width>12</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Schedule</Label>
+        <Width>12</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Region</Label>
+        <Width>12</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Account ID</Label>
+        <Width>12</Width>
+      </TableColumnHeader>
+    </TableHeaders>
+    <TableRowEntries>
+      <TableRowEntry>
+        <TableColumnItems>
+          <TableColumnItem>
+           <PropertyName>Name</PropertyName>
+          </TableColumnItem>
+          <TableColumnItem>
+            <PropertyName>State</PropertyName>
+          </TableColumnItem>
+          <TableColumnItem>
+            <PropertyName>ScheduleExpression</PropertyName>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>$null = $PSItem.Arn -match '(?&lt;region&gt;us[\w\d-]+):'; $matches.region</ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>$null = $PSItem.Arn -match '(?&lt;accountid&gt;\d{12}):'; $matches.accountid</ScriptBlock>
+          </TableColumnItem>
+        </TableColumnItems>
+      </TableRowEntry>
+    </TableRowEntries>
+  </TableControl>
+</View>
+
+  </ViewDefinitions>
+</Configuration>
